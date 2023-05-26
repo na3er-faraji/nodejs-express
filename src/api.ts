@@ -3,11 +3,11 @@ import { PORT, DBURL, CORS_ORIGINS } from "./config";
 import cors from "cors";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
-import { router as favoriteRouter } from "./routes/favorite.router";
-import { router as profileRouter } from "./routes/profile.router";
-import { router as simulatorRouter } from "./routes/simulator.router";
+import  favoriteRouter  from "./services/favorite";
+import profileRouter  from "./services/profile";
+import simulatorRouter  from "./services/simulator";
 import swaggerUi from "swagger-ui-express";
-const swaggerDocument = require('../swagger.json');
+const swaggerDocument = require("../swagger.json");
 
 mongoose
   .connect(`${DBURL}`, { useNewUrlParser: true, useUnifiedTopology: true })

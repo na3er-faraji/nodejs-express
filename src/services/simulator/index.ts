@@ -1,6 +1,6 @@
 import express from "express";
 import { Router } from "express";
-import { Simulator } from "../models/Simulator";
+import { Simulator } from "../../models/Simulator";
 import cors from "cors";
 
 var app = express();
@@ -34,3 +34,5 @@ router.post("/api/simulator/:profile_id", async (req, res) => {
   var simulator = await Simulator.create(newData);
   res.json(simulator);
 });
+
+export default router;
