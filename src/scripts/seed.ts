@@ -6,7 +6,7 @@ import { Favorite } from "../models/Favorite";
 import { DBURL } from "../config";
 
 (async () => {
-console.log("DBURL=",DBURL)
+  console.log("DBURL=", DBURL);
   mongoose.connect(DBURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
