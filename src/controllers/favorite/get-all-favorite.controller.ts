@@ -2,9 +2,6 @@ import favoriteDB from "../../data-access/favorite";
 
 const fetchAllFavoriteController = () => {
   return async function getAll(httpRequest) {
-    const headers = {
-      "Content-Type": "application/json",
-    };
     try {
       const { source = {}, ...info } = httpRequest.body;
       console.log("source=", source);
@@ -27,7 +24,9 @@ const fetchAllFavoriteController = () => {
     } catch (e) {
       console.log(e);
       return {
-        headers,
+        headers: {
+          "Content-Type": "application/json",
+        },
         statusCode: 400,
         body: {
           error: e.message,

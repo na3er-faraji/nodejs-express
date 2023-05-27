@@ -2,9 +2,6 @@ import simulatorDB from "../../data-access/simulator";
 
 const addSimulatorToProfileController = () => {
   return async function post(httpRequest) {
-    const headers = {
-      "Content-Type": "application/json",
-    };
     try {
       const { source = {}, ...info } = httpRequest.body;
       source.ip = httpRequest.ip;
@@ -32,7 +29,9 @@ const addSimulatorToProfileController = () => {
     } catch (e) {
       console.log(e);
       return {
-        headers,
+        headers: {
+          "Content-Type": "application/json"
+        },
         statusCode: 400,
         body: {
           error: e.message,

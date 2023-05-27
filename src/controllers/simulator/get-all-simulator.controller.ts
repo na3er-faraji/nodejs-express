@@ -2,9 +2,6 @@ import simulatorDB from "../../data-access/simulator";
 
 const fetchAllSimulatorController = () => {
   return async function getAll(httpRequest) {
-    const headers = {
-      "Content-Type": "application/json"
-    };
     try {
       const { source = {}, ...info } = httpRequest.body;
       source.ip = httpRequest.ip;
@@ -25,7 +22,9 @@ const fetchAllSimulatorController = () => {
     } catch (e) {
       console.log(e);
       return {
-        headers,
+        headers: {
+          "Content-Type": "application/json"
+        },
         statusCode: 400,
         body: {
           error: e.message
