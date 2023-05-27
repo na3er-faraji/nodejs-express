@@ -1,9 +1,10 @@
 const router = require("express").Router();
-import { postSimulatorToProfileController, getAllSimullator, getAllSimulatorForProfile } from "../controllers/simulator/index";
+import { postSimulatorToProfileController, getAllSimullatorController, getAllSimulatorForProfileController } from "../controllers/simulator/index";
 import makeExpressCallback from "../express-callback/index";
 
-router.post("/simulator", makeExpressCallback(postSimulatorToProfileController));
-router.get("/simulator/", makeExpressCallback(getAllSimullator));
-router.get("/simulator/", makeExpressCallback(getAllSimulatorForProfile));
+router.get("/simulator", makeExpressCallback(getAllSimullatorController));
+router.get("/simulator/", makeExpressCallback(getAllSimulatorForProfileController));
+router.post("/simulator/", makeExpressCallback(postSimulatorToProfileController));
+
 
 module.exports = router;

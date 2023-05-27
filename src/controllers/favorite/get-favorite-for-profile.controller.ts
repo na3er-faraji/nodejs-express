@@ -1,7 +1,7 @@
 import favoriteDB from "../../data-access/favorite";
 
-const fetchFavoriteDetailsController = () => {
-  return async function getDetails(httpRequest) {
+const fetchFavoriteForProfileController = () => {
+  return async function getAll(httpRequest) {
     const headers = {
       "Content-Type": "application/json",
     };
@@ -15,7 +15,7 @@ const fetchFavoriteDetailsController = () => {
         id: httpRequest.params.id,
       };
 
-      const favorite = favoriteDB.getFavoriteById(httpRequest.params.id || 0)
+      const favorite = await favoriteDB.getFavoriteForProfile(httpRequest.params.id)
 
       return {
         headers: {
@@ -37,4 +37,4 @@ const fetchFavoriteDetailsController = () => {
   };
 };
 
-export default fetchFavoriteDetailsController;
+export default fetchFavoriteForProfileController;

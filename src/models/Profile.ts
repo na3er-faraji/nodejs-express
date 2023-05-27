@@ -11,4 +11,6 @@ const schema = new Schema({
   prefered_cryptocurrency: String,
 });
 
-export default  mongoose.model("Profile", schema);
+const modelProfile = mongoose.model("Profile", schema);
+
+export default modelProfile;

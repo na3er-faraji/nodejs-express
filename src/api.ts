@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 // Routes
 app.use("/api", require("./routes/favorite.route"));
 app.use("/api", require("./routes/profile.route"));
+app.use("/api", require("./routes/simulator.route"));
 
 app.use("/api", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 

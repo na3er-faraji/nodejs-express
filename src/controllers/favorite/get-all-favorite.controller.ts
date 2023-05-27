@@ -15,7 +15,7 @@ const fetchAllFavoriteController = () => {
         ...info,
         source,
       };
-      const favorite = favoriteDB.getAllFavorite();
+      const favorite = await favoriteDB.getAllFavorite();
       console.log("favorite=", favorite);
       return {
         headers: {
