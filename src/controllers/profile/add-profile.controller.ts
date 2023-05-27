@@ -1,4 +1,4 @@
-import { Profile } from "../../models/Profile";
+import profileDB from "../../data-access/profile";
 
 const addProfileController = () => {
   return async function post(httpRequest) {
@@ -16,12 +16,9 @@ const addProfileController = () => {
 
       var { email, name, nickname } = info;
 
-      let profile = await Profile.findOne({
-        $or: [{ email }, { nickname }],
-      }).exec();
-
+      let profile =  await profileDB.searchProfile(email, nickname);
       if (!profile) {
-        profile = await Profile.create({ name, email, nickname });
+        profile = await profileDB.addProfile(name, email, nickname);
       }
 
       return {

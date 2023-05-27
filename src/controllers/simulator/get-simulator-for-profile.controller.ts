@@ -1,10 +1,9 @@
-import { Favorite } from "../../models/Favorite";
-import { Simulator } from "../../models/Simulator";
+import simulatorDB from "../../data-access/simulator";
 
 const fetchAllSimulatorForProfileController = () => {
   return async function getAll(httpRequest) {
     const headers = {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     };
     try {
       const { source = {}, ...info } = httpRequest.body;
@@ -12,18 +11,17 @@ const fetchAllSimulatorForProfileController = () => {
       source.browser = httpRequest.headers["User-Agent"];
       const response = {
         ...info,
-        source
+        source,
       };
 
-      const query = { profile_id : httpRequest.params.id };
-      var simulators = await Simulator.find(query);
-
+      const profileId = httpRequest.params.id;
+      const simulators = await simulatorDB.getSimulatorForProfile(profileId);
       return {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         statusCode: 200,
-        body: simulators
+        body: simulators,
       };
     } catch (e) {
       console.log(e);
@@ -31,8 +29,8 @@ const fetchAllSimulatorForProfileController = () => {
         headers,
         statusCode: 400,
         body: {
-          error: e.message
-        }
+          error: e.message,
+        },
       };
     }
   };

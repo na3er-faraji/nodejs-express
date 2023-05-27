@@ -16,4 +16,4 @@ const schema = new Schema(
   }
 );
 
-export const Simulator = mongoose.model("Simulator", schema);
+export default mongoose.model("Simulator", schema);

@@ -1,16 +1,12 @@
 import express from "express";
-import { PORT, DBURL, CORS_ORIGINS } from "./config";
+import { PORT, CORS_ORIGINS } from "./config";
 import cors from "cors";
 import bodyParser from "body-parser";
-import mongoose from "mongoose";
 import swaggerUi from "swagger-ui-express";
+import { connectToDatabase } from './models';
 const swaggerDocument = require("../swagger.json");
 
-mongoose
-  .connect(`${DBURL}`, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log(`Connected to DB ${DBURL}`);
-  });
+connectToDatabase();
 
 const app = express();
 app.use(cors({ origin: CORS_ORIGINS }));

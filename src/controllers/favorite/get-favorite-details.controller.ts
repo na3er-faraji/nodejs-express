@@ -1,9 +1,9 @@
-import { Favorite } from "../../models/Favorite";
+import favoriteDB from "../../data-access/favorite";
 
 const fetchFavoriteDetailsController = () => {
   return async function getDetails(httpRequest) {
     const headers = {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     };
     try {
       const { source = {}, ...info } = httpRequest.body;
@@ -12,19 +12,17 @@ const fetchFavoriteDetailsController = () => {
       const response = {
         ...info,
         source,
-        id: httpRequest.params.id
+        id: httpRequest.params.id,
       };
 
-      let query = {};
-      query = { profile_id : httpRequest.params.id };
-      const favorite = await Favorite.find(query);
+      const favorite = favoriteDB.getFavoriteById(httpRequest.params.id || 0)
 
       return {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         statusCode: 200,
-        body: favorite
+        body: favorite,
       };
     } catch (e) {
       console.log(e);
@@ -32,11 +30,11 @@ const fetchFavoriteDetailsController = () => {
         headers,
         statusCode: 400,
         body: {
-          error: e.message
-        }
+          error: e.message,
+        },
       };
     }
   };
 };
 
-export default  fetchFavoriteDetailsController;
+export default fetchFavoriteDetailsController;

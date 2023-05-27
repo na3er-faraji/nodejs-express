@@ -1,4 +1,4 @@
-import { Profile } from "../../models/Profile";
+import simulatorDB from "../../data-access/simulator";
 
 const fetchAllSimulatorController = () => {
   return async function getAll(httpRequest) {
@@ -13,13 +13,14 @@ const fetchAllSimulatorController = () => {
         ...info,
         source
       };
-      var profile = await Profile.find().lean();
+      
+      var simulator = await simulatorDB.getAllSimulator();
       return {
         headers: {
           "Content-Type": "application/json"
         },
         statusCode: 200,
-        body: profile
+        body: simulator
       };
     } catch (e) {
       console.log(e);

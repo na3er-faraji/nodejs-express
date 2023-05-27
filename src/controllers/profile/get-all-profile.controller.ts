@@ -1,4 +1,4 @@
-import { Profile } from "../../models/Profile";
+import profileDB from "../../data-access/profile";
 
 const fetchAllProfileController = () => {
   return async function getAll(httpRequest) {
@@ -13,13 +13,13 @@ const fetchAllProfileController = () => {
         ...info,
         source
       };
-      var profile = await Profile.find().lean();
+      var profiles = await profileDB.getAllProfile();
       return {
         headers: {
           "Content-Type": "application/json"
         },
         statusCode: 200,
-        body: profile
+        body: profiles
       };
     } catch (e) {
       console.log(e);
