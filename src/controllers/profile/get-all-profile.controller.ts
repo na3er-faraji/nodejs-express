@@ -1,4 +1,5 @@
 import profileDB from "../../data-access/profile";
+import { ResponseSuccess, ResponseError } from "../../utils/response";
 
 const fetchAllProfileController = () => {
   return async function getAll(httpRequest) {
@@ -8,27 +9,12 @@ const fetchAllProfileController = () => {
       source.browser = httpRequest.headers["User-Agent"];
       const toView = {
         ...info,
-        source
+        source,
       };
       var profiles = await profileDB.getAllProfile();
-      return {
-        headers: {
-          "Content-Type": "application/json"
-        },
-        statusCode: 200,
-        body: profiles
-      };
+      return ResponseSuccess(profiles);
     } catch (e) {
-      console.log(e);
-      return {
-        headers: {
-          "Content-Type": "application/json"
-        },
-        statusCode: 400,
-        body: {
-          error: e.message
-        }
-      };
+      return ResponseError(e);
     }
   };
 };

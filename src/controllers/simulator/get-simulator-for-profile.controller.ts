@@ -1,4 +1,5 @@
 import simulatorDB from "../../data-access/simulator";
+import { ResponseSuccess, ResponseError } from "../../utils/response";
 
 const fetchAllSimulatorForProfileController = () => {
   return async function getAll(httpRequest) {
@@ -13,24 +14,9 @@ const fetchAllSimulatorForProfileController = () => {
 
       const profileId = httpRequest.params.id;
       const simulators = await simulatorDB.getSimulatorForProfile(profileId);
-      return {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        statusCode: 200,
-        body: simulators,
-      };
+      return ResponseSuccess(simulators);
     } catch (e) {
-      console.log(e);
-      return {
-        headers: {
-          "Content-Type": "application/json"
-        },
-        statusCode: 400,
-        body: {
-          error: e.message,
-        },
-      };
+      return ResponseError(e);
     }
   };
 };

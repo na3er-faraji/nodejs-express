@@ -1,4 +1,5 @@
 import profileDB from "../../data-access/profile";
+import { ResponseSuccess, ResponseError } from "../../utils/response";
 
 const addProfileController = () => {
   return async function post(httpRequest) {
@@ -8,34 +9,18 @@ const addProfileController = () => {
       source.browser = httpRequest.headers["User-Agent"];
       const toView = {
         ...info,
-        source
+        source,
       };
 
       var { email, name, nickname } = info;
 
-      let profile =  await profileDB.searchProfile(email, nickname);
+      let profile = await profileDB.searchProfile(email, nickname);
       if (!profile) {
         profile = await profileDB.addProfile(name, email, nickname);
       }
-
-      return {
-        headers: {
-          "Content-Type": "application/json"
-        },
-        statusCode: 200,
-        body: profile
-      };
+      return ResponseSuccess(profile);
     } catch (e) {
-      console.log(e);
-      return {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        statusCode: 400,
-        body: {
-          error: e.message
-        }
-      };
+      return ResponseError(e);
     }
   };
 };

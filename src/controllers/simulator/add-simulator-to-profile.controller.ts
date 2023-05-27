@@ -1,4 +1,5 @@
 import simulatorDB from "../../data-access/simulator";
+import { ResponseSuccess, ResponseError } from "../../utils/response";
 
 const addSimulatorToProfileController = () => {
   return async function post(httpRequest) {
@@ -18,25 +19,9 @@ const addSimulatorToProfileController = () => {
       };
       console.log(newData);
       var simulator = await simulatorDB.addSimulatorToProfile(newData);
-
-      return {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        statusCode: 200,
-        body: simulator,
-      };
+      return ResponseSuccess(simulator);
     } catch (e) {
-      console.log(e);
-      return {
-        headers: {
-          "Content-Type": "application/json"
-        },
-        statusCode: 400,
-        body: {
-          error: e.message,
-        },
-      };
+      return ResponseError(e);
     }
   };
 };

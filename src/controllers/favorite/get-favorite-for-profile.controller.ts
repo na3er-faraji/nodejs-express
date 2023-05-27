@@ -1,4 +1,5 @@
 import favoriteDB from "../../data-access/favorite";
+import { ResponseSuccess, ResponseError } from "../../utils/response";
 
 const fetchFavoriteForProfileController = () => {
   return async function getAll(httpRequest) {
@@ -12,26 +13,12 @@ const fetchFavoriteForProfileController = () => {
         id: httpRequest.params.id,
       };
 
-      const favorite = await favoriteDB.getFavoriteForProfile(httpRequest.params.id)
-
-      return {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        statusCode: 200,
-        body: favorite,
-      };
+      const favorite = await favoriteDB.getFavoriteForProfile(
+        httpRequest.params.id
+      );
+      return ResponseSuccess(favorite);
     } catch (e) {
-      console.log(e);
-      return {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        statusCode: 400,
-        body: {
-          error: e.message,
-        },
-      };
+      return ResponseError(e);
     }
   };
 };
