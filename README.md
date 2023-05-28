@@ -10,7 +10,7 @@ summarize of what I have done on the project to improve productivity and prepare
 - Add swagger
 
 ## Change the project architecture
-changing the project architecture to be more flexible as the project grows. It should be more readable and easier to maintain. This will increase the code readability and make it easier to understand as the project becomes more complex and needs more maintenance
+changing the project architecture to be more flexible as the project grows. This will increase the code readability and make it easier to understand as the project becomes more complex and needs more maintenance
 
 
 ## Use gzip compression
