@@ -2,7 +2,7 @@
 
 summarize of what I have done on the project to improve productivity and prepare for production.
 
-## Table of contents (optional)
+## Table of contents
 
 - Change the project architecture
 - Use gzip compression
