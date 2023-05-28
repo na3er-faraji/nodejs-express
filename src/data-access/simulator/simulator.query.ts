@@ -1,4 +1,3 @@
-
 const simulatorData = ({ model }) => {
   async function getAllSimulator() {
     try {
@@ -33,7 +32,6 @@ const simulatorData = ({ model }) => {
     addSimulatorToProfile,
     getSimulatorForProfile,
   });
-}
+};
 
 export default simulatorData;
-

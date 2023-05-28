@@ -1,5 +1,8 @@
 const router = require("express").Router();
-import { getAllProfileController, postProfileController } from "../controllers/profile/index";
+import {
+  getAllProfileController,
+  postProfileController,
+} from "../controllers/profile/index";
 import makeExpressCallback from "../express-callback/index";
 
 router.get("/profile", makeExpressCallback(getAllProfileController));

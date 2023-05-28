@@ -1,9 +1,8 @@
 const viewAllProfiles = ({ profileDB }) => {
-    return async function viewProfiless() {
-      const result = await profileDB.getAllProfile();
-      return result;
-    };
+  return async function viewProfiless() {
+    const result = await profileDB.getAllProfile();
+    return result;
   };
-  
+};
+
 export default viewAllProfiles;
-  

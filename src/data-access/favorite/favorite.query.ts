@@ -1,4 +1,3 @@
-
 const favoriteData = ({ model }) => {
   async function getAllFavorite() {
     try {
@@ -19,9 +18,21 @@ const favoriteData = ({ model }) => {
     }
   }
 
-  async function addFavorite(profileId: string, name: string, favorite1: string, favorite2: string, favorite3: string) {
+  async function addFavorite(
+    profileId: string,
+    name: string,
+    favorite1: string,
+    favorite2: string,
+    favorite3: string
+  ) {
     try {
-      const favorite = await model.create({ profile_id: profileId , name, favorite1, favorite2, favorite3 });
+      const favorite = await model.create({
+        profile_id: profileId,
+        name,
+        favorite1,
+        favorite2,
+        favorite3,
+      });
       return favorite;
     } catch (error) {
       console.log(error);
@@ -31,9 +42,8 @@ const favoriteData = ({ model }) => {
   return Object.freeze({
     getAllFavorite,
     getFavoriteForProfile,
-    addFavorite
+    addFavorite,
   });
-}
+};
 
 export default favoriteData;
-

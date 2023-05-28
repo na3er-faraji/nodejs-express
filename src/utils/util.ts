@@ -5,5 +5,5 @@ export function isDate(date) {
     return false;
   }
 
-  return true
+  return true;
 }

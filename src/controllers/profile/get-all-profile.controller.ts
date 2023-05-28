@@ -1,6 +1,6 @@
 import { ResponseSuccess, ResponseError } from "../../utils/response";
 
-const fetchAllProfileController = ({viewAllProfilesUseCase}) => {
+const fetchAllProfileController = ({ viewAllProfilesUseCase }) => {
   return async function getAll(httpRequest) {
     try {
       var profiles = await viewAllProfilesUseCase(httpRequest.body);

@@ -5,4 +5,3 @@ import addProfile from "./add-profile.usecase";
 
 export const addProfileUseCase = addProfile({ profileDB, profileEntity });
 export const viewAllProfilesUseCase = viewAllProfiles({ profileDB });
-

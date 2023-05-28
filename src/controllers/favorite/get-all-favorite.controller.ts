@@ -1,6 +1,6 @@
 import { ResponseSuccess, ResponseError } from "../../utils/response";
 
-const fetchAllFavoriteController = ({viewAllFavoritesUseCase}) => {
+const fetchAllFavoriteController = ({ viewAllFavoritesUseCase }) => {
   return async function getAll(httpRequest) {
     try {
       const favorite = await viewAllFavoritesUseCase(httpRequest.body);

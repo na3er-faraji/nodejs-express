@@ -3,7 +3,7 @@ import { PORT, CORS_ORIGINS } from "./config";
 import cors from "cors";
 import bodyParser from "body-parser";
 import swaggerUi from "swagger-ui-express";
-import { connectToDatabase } from './models';
+import { connectToDatabase } from "./models";
 const swaggerDocument = require("../swagger.json");
 
 connectToDatabase();

@@ -1,4 +1,3 @@
-
 const profileData = ({ model }) => {
   async function getAllProfile() {
     try {
@@ -21,19 +20,34 @@ const profileData = ({ model }) => {
 
   async function searchProfile(email: string, nickname: string) {
     try {
-      let profile = await model.findOne({
-        $or: [{ email }, { nickname }],
-      }).exec();
+      let profile = await model
+        .findOne({
+          $or: [{ email }, { nickname }],
+        })
+        .exec();
       return profile;
     } catch (error) {
       console.log(error);
     }
   }
 
-  async function addProfile(name: string, email: string, nickname: string, capital?: string, divisa?: string,
-                             prefered_cryptocurrency?: string) {
+  async function addProfile(
+    name: string,
+    email: string,
+    nickname: string,
+    capital?: string,
+    divisa?: string,
+    prefered_cryptocurrency?: string
+  ) {
     try {
-      const profile = await model.create({ name, email, nickname, capital, divisa, prefered_cryptocurrency });
+      const profile = await model.create({
+        name,
+        email,
+        nickname,
+        capital,
+        divisa,
+        prefered_cryptocurrency,
+      });
       return profile;
     } catch (error) {
       console.log(error);
@@ -46,7 +60,6 @@ const profileData = ({ model }) => {
     searchProfile,
     addProfile,
   });
-}
+};
 
 export default profileData;
-

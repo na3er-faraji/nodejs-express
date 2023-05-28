@@ -2,13 +2,19 @@ import favoriteDB from "../data-access/favorite";
 import profileDB from "../data-access/profile";
 import simulatorDB from "../data-access/simulator";
 
-import { connectToDatabase, disconnect } from '../models'
+import { connectToDatabase, disconnect } from "../models";
 
 (async () => {
-  
   connectToDatabase();
 
-  const profile = await profileDB.addProfile(`String`, `String`, `String`, `123`, `String`, `String`);
+  const profile = await profileDB.addProfile(
+    `String`,
+    `String`,
+    `String`,
+    `123`,
+    `String`,
+    `String`
+  );
 
   await simulatorDB.addSimulatorToProfile({
     profile_id: profile._id,
@@ -19,8 +25,13 @@ import { connectToDatabase, disconnect } from '../models'
     quantity: `123`,
   });
 
-  await favoriteDB.addFavorite(profile._id, `String`, `String`, `String`, `String`)
+  await favoriteDB.addFavorite(
+    profile._id,
+    `String`,
+    `String`,
+    `String`,
+    `String`
+  );
 
   disconnect();
-
 })();
