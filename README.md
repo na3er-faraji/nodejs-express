@@ -5,6 +5,7 @@ summarize of what I have done on the project to improve productivity and prepare
 ## Table of contents
 
 - Change the project architecture
+- Data validation strategy
 - Use gzip compression
 - Use Helmet module
 - Add swagger
@@ -12,6 +13,8 @@ summarize of what I have done on the project to improve productivity and prepare
 ## Change the project architecture
 changing the project architecture to be more flexible as the project grows. This will increase the code readability and make it easier to understand as the project becomes more complex and needs more maintenance
 
+## Data validation strategy
+A data validation strategy makes it easier for you to ensure that you can focus on building the API, and allow for the frontend to handle validation errors
 
 ## Use gzip compression
 Gzip compressing can greatly decrease the size of the response body and hence increase the speed of a web app. Use the compression middleware for gzip compression in your your app
