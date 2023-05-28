@@ -1,10 +1,12 @@
+import logger from '../../config/winston';
+
 const favoriteData = ({ model }) => {
   async function getAllFavorite() {
     try {
       const favorite = await model.find().lean();
       return favorite;
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
   }
 
@@ -14,7 +16,7 @@ const favoriteData = ({ model }) => {
       const favorite = await model.find(query);
       return favorite;
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
   }
 
@@ -35,7 +37,7 @@ const favoriteData = ({ model }) => {
       });
       return favorite;
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
   }
 

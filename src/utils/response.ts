@@ -1,3 +1,5 @@
+import logger from '../config/winston';
+
 export function ResponseSuccess(data) {
   return {
     headers: {
@@ -9,7 +11,7 @@ export function ResponseSuccess(data) {
 }
 
 export function ResponseError(error) {
-  console.log(error);
+  logger.error(error);
   return {
     headers: {
       "Content-Type": "application/json",

@@ -1,10 +1,12 @@
+import logger from '../../config/winston';
+
 const profileData = ({ model }) => {
   async function getAllProfile() {
     try {
       const profile = await model.find().lean();
       return profile;
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
   }
 
@@ -14,7 +16,7 @@ const profileData = ({ model }) => {
       const profile = await model.findOne(query);
       return profile;
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
   }
 
@@ -27,7 +29,7 @@ const profileData = ({ model }) => {
         .exec();
       return profile;
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
   }
 
@@ -50,7 +52,7 @@ const profileData = ({ model }) => {
       });
       return profile;
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
   }
 

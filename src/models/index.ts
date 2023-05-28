@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import  CONFIG  from "../config/environment";
+import logger from '../config/winston';
 
 export async function connectToDatabase() {
   try {
@@ -7,18 +8,18 @@ export async function connectToDatabase() {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log(`Connected to DB ${CONFIG.dbUrl}`);
+    logger.info(`Connected to DB ${CONFIG.dbUrl}`);
   } catch (error) {
-    console.error(error);
+    logger.error(error);
   }
 }
 
 export async function disconnect() {
   try {
     await mongoose.disconnect();
-    console.log(`Disconnected from DB ${CONFIG.dbUrl}`);
+    logger.info(`Disconnected from DB ${CONFIG.dbUrl}`);
   } catch (error) {
-    console.error(error);
+    logger.error(error);
   }
 }
 

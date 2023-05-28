@@ -1,10 +1,12 @@
+import logger from '../../config/winston';
+
 const simulatorData = ({ model }) => {
   async function getAllSimulator() {
     try {
       const simulator = await model.find().lean();
       return simulator;
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
   }
 
@@ -14,7 +16,7 @@ const simulatorData = ({ model }) => {
       var simulators = await model.find(query);
       return simulators;
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
   }
 
@@ -23,7 +25,7 @@ const simulatorData = ({ model }) => {
       const simulator = await model.create(data);
       return simulator;
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
   }
 

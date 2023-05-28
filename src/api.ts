@@ -5,6 +5,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import swaggerUi from "swagger-ui-express";
 import { connectToDatabase } from "./models";
+import logger from './config/winston';
 const swaggerDocument = require("../swagger.json");
 
 connectToDatabase();
@@ -23,5 +24,5 @@ app.use("/api", require("./routes/simulator.route"));
 app.use("/api", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(CONFIG.port, () =>
-  console.log(`✅ Ready on port http://localhost:${CONFIG.port}`)
+  logger.info(`✅Ready on port http://localhost:${CONFIG.port}`)
 );
