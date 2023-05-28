@@ -5,6 +5,7 @@ import {
 } from "../controllers/profile/index";
 import makeExpressCallback from "../express-callback/index";
 
+
 router.get("/profile", makeExpressCallback(getAllProfileController));
 router.post("/profile/", makeExpressCallback(postProfileController));
 

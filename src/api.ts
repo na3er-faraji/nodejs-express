@@ -1,5 +1,6 @@
 import express from "express";
-import { PORT, CORS_ORIGINS } from "./config";
+import compression from 'compression';
+import CONFIG from "./config/environment";
 import cors from "cors";
 import bodyParser from "body-parser";
 import swaggerUi from "swagger-ui-express";
@@ -9,7 +10,8 @@ const swaggerDocument = require("../swagger.json");
 connectToDatabase();
 
 const app = express();
-app.use(cors({ origin: CORS_ORIGINS }));
+app.use(compression())
+app.use(cors({ origin: CONFIG.crosOrigin }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -20,6 +22,6 @@ app.use("/api", require("./routes/simulator.route"));
 
 app.use("/api", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-app.listen(PORT, () =>
-  console.log(`✅ Ready on port http://localhost:${PORT}`)
+app.listen(CONFIG.port, () =>
+  console.log(`✅ Ready on port http://localhost:${CONFIG.port}`)
 );
