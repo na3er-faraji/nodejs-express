@@ -11,7 +11,6 @@ const CORS_ORIGINS = ["http://localhost:3000"];
 
 export const CONFIG = {
   environment:  environment,
-  logs: environment === "production" ? "combined" : "dev",
   port: PORT,
   dbUrl: DBURL,
   crosOrigin: CORS_ORIGINS,
