@@ -3,8 +3,8 @@ import { postSimulatorToProfileController, getAllSimullatorController, getAllSim
 import makeExpressCallback from "../express-callback/index";
 
 router.get("/simulator", makeExpressCallback(getAllSimullatorController));
-router.get("/simulator/", makeExpressCallback(getAllSimulatorForProfileController));
-router.post("/simulator/", makeExpressCallback(postSimulatorToProfileController));
+router.get("/simulator/:profileId", makeExpressCallback(getAllSimulatorForProfileController));
+router.post("/simulator/:profileId", makeExpressCallback(postSimulatorToProfileController));
 
 
 module.exports = router;

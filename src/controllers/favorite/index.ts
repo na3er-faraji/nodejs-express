@@ -1,6 +1,7 @@
 
+import { viewAllFavoriteForProfilesUseCase, viewAllFavoritesUseCase } from "../../use-cases/favorite";
 import fetchAllFavoriteController from "./get-all-favorite.controller";
-import fetchFavoriteDetailsController from "./get-favorite-for-profile.controller";
+import fetchFavoriteForProfileController from "./get-favorite-for-profile.controller";
 
-export const getAllFavoriteController = fetchAllFavoriteController();
-export const getFavoriteByIdController = fetchFavoriteDetailsController();
+export const getAllFavoriteController = fetchAllFavoriteController({ viewAllFavoritesUseCase });
+export const getFavoriteForProfileController = fetchFavoriteForProfileController({ viewAllFavoriteForProfilesUseCase });

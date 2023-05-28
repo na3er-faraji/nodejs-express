@@ -30,15 +30,6 @@ const profileData = ({ model }) => {
     }
   }
 
-  // async function addProfile(name: string, email: string, nickname: string) {
-  //   try {
-  //     const profile = await model.create({ name, email, nickname });
-  //     return profile;
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
   async function addProfile(name: string, email: string, nickname: string, capital?: string, divisa?: string,
                              prefered_cryptocurrency?: string) {
     try {

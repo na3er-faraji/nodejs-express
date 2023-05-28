@@ -1,5 +1,4 @@
 export function ResponseSuccess(data) {
-console.log("data=", data)
   return {
     headers: {
       "Content-Type": "application/json",
@@ -17,7 +16,7 @@ export function ResponseError(error) {
     },
     statusCode: 400,
     body: {
-      error: error.messgae,
+      error: error.message || error,
     },
   };
 }

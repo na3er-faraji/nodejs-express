@@ -1,24 +1,14 @@
-import simulatorDB from "../../data-access/simulator";
 import { ResponseSuccess, ResponseError } from "../../utils/response";
 
-const addSimulatorToProfileController = () => {
+const addSimulatorToProfileController = ({ addSimulatorToProfileUseCase }) => {
   return async function post(httpRequest) {
     try {
-      const { source = {}, ...info } = httpRequest.body;
-      source.ip = httpRequest.ip;
-      source.browser = httpRequest.headers["User-Agent"];
-      const toView = {
-        ...info,
-        source,
-      };
-
-      var { profile_id } = httpRequest.params;
+      var { profileId } = httpRequest.params;
       var newData = {
         ...httpRequest.body,
-        profile_id,
+        profileId,
       };
-      console.log(newData);
-      var simulator = await simulatorDB.addSimulatorToProfile(newData);
+      const simulator = await addSimulatorToProfileUseCase(newData);
       return ResponseSuccess(simulator);
     } catch (e) {
       return ResponseError(e);

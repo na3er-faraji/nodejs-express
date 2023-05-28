@@ -1,17 +1,9 @@
-import profileDB from "../../data-access/profile";
 import { ResponseSuccess, ResponseError } from "../../utils/response";
 
-const fetchAllProfileController = () => {
+const fetchAllProfileController = ({viewAllProfilesUseCase}) => {
   return async function getAll(httpRequest) {
     try {
-      const { source = {}, ...info } = httpRequest.body;
-      source.ip = httpRequest.ip;
-      source.browser = httpRequest.headers["User-Agent"];
-      const toView = {
-        ...info,
-        source,
-      };
-      var profiles = await profileDB.getAllProfile();
+      var profiles = await viewAllProfilesUseCase(httpRequest.body);
       return ResponseSuccess(profiles);
     } catch (e) {
       return ResponseError(e);
